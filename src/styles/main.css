@@ -1,0 +1,369 @@
+ * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: #0c4a6e;
+    background: #f0f9ff;
+    overflow-x: hidden;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  /* Sticky header */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+    box-shadow: 0 4px 15px rgba(14, 165, 233, 0.2);
+    border-bottom: 1px solid #7dd3fc;
+    transition: background 0.3s ease;
+  }
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 0;
+  }
+
+  /* Logo styles */
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #0c4a6e;
+    text-decoration: none;
+  }
+
+  .logo-icon {
+    width: 50px;
+    height: 50px;
+    background: url('https://harys722.github.io/test/profilie.png') center/cover no-repeat;
+  }
+
+  /* Navigation links */
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: #075985;
+    font-weight: 600;
+    transition: color 0.3s, transform 0.3s;
+  }
+
+  .nav-links a:hover {
+    color: #00008B;
+    transform: translateY(-2px);
+  }
+
+  /* Mobile menu button */
+  .mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    color: #075985;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+
+  /* Hero section styling */
+  .hero {
+    padding: 120px 20px;
+    text-align: center;
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+  }
+
+  .hero h1 {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 900;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, #0ea5e9, #0284c7, #0369a1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.2;
+  }
+
+  .hero p {
+    font-size: 1.2rem;
+    color: #075985;
+    max-width: 700px;
+    margin: 0 auto 2.5rem;
+  }
+
+  .hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.2rem;
+  }
+
+  /* Buttons styling */
+  .btn-primary, .btn-secondary {
+    padding: 15px 30px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    min-width: 180px;
+    text-align: center;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, #0ea5e9, #0284c7);
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(14, 165, 233, 0.4);
+  }
+
+  .btn-secondary {
+    background: #ADD8E6;
+    color: #0c4a6e;
+    border: 2px solid #7dd3fc;
+  }
+
+  .btn-secondary:hover {
+    border-color: #0c4a6e;
+    box-shadow: 0 4px 15px rgba(14, 165, 233, 0.15);
+    transform: translateY(-2px);
+  }
+
+  /* Features section */
+  .features {
+    padding: 100px 20px;
+    background: #f0f9ff;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .section-header h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #0c4a6e;
+    margin-bottom: 1rem;
+  }
+
+  .section-header p {
+    font-size: 1.1rem;
+    color: #075985;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+    margin-top: 4rem;
+  }
+
+  .feature-card {
+    background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+    padding: 2.5rem;
+    border-radius: 20px;
+    border: 1px solid #bae6fd;
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  }
+  .feature-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(14, 165, 233, 0.05), transparent);
+    transition: left 0.6s ease;
+  }
+  .feature-card:hover::before {
+    left: 100%;
+  }
+
+  .feature-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(14, 165, 233, 0.12);
+    border-color: #0ea5e9;
+  }
+
+  .feature-icon {
+    width: 70px; height: 70px;
+    background: linear-gradient(135deg, #0ea5e9, #0284c7);
+    border-radius: 18px;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-size: 2rem;
+    color: white;
+    box-shadow: 0 8px 20px rgba(14, 165, 233, 0.3);
+  }
+
+  /* Footer styles */
+  footer {
+    background: #0c4a6e;
+    color: #fff;
+    padding: 3rem 20px 2rem;
+    margin-top: 50px;
+  }
+
+  .footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.4rem;
+    font-weight: 600;
+  }
+
+  .footer-logo .logo-icon {
+    width: 35px;
+    height: 35px;
+    background: url('https://harys722.github.io/test/profilie.png') center/cover no-repeat;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+  }
+
+  .footer-links a {
+    color: #bae6fd;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s, transform 0.3s;
+  }
+
+  .footer-links a:hover {
+    color: #fff;
+    transform: translateY(-1px);
+  }
+
+  .footer-bottom {
+    margin-top: 2rem;
+    border-top: 1px solid #075985;
+    padding-top: 1.5rem;
+    font-size: 0.95rem;
+    text-align: center;
+  }
+
+  /* Mobile responsive styles */
+  @media(max-width: 768px) {
+    .mobile-menu-btn {
+      display: block;
+    }
+
+  @media(max-width: 768px) {
+    footer {
+      padding: 2rem 20px;
+    }
+    footer .footer-content {
+      flex-direction: column;
+      align-items: center;
+    }
+    footer .footer-logo {
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+    footer .footer-links {
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    footer .footer-bottom {
+      margin-top: 1.5rem;
+      padding-top: 1rem;
+    }
+  }
+
+    .nav-links {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background: #e0f2fe;
+      flex-direction: column;
+      width: 100%;
+      display: none;
+      padding: 1rem 0;
+      border-top: 1px solid #7dd3fc;
+    }
+
+    .nav-links.active {
+      display: flex;
+    }
+
+    .nav-links a {
+      padding: 0.8rem 20px;
+      border-bottom: 1px solid #bae6fd;
+    }
+
+    .hero {
+      padding: 80px 20px;
+    }
+
+    .features-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+
+  /* Animations */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #e0f2fe;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #0ea5e9;
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #0284c7;
+  }
